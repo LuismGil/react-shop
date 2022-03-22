@@ -6,7 +6,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   mode: 'development',
   resolve: {
@@ -30,13 +31,20 @@ module.exports = {
         ]
       },
       {
-        test: /\.s[ac]ss/i,
+        test: /\.(css|scss)$/,
         use: [
           "style-loader",
           "css-loader",
           "sass-loader",
         ],
-      }
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[hash].[ext]',
+        },
+    },
     ]
   },
   plugins: [
@@ -49,8 +57,6 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 3005,
+    historyApiFallback: true,
   }
 }

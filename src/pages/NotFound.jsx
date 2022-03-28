@@ -1,12 +1,11 @@
 import React from 'react';
-import imgNotFound from './404NotFound.jpg'
 
 const NotFound = () => {
-  return (
-    <div>
-      <img src={imgNotFound} alt="404NotFound" />
-    </div>
-  );
-};
+	return (
+		<div>
+			No encontrado, error 404.
+		</div>
+	);
+}
 
 export default NotFound;
